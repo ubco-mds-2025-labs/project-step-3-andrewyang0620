@@ -1,12 +1,11 @@
 import sys
 import os
 import uuid
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.quizsession.session import loadUsers, loadAllQuestions, selectUser, pickQuestions, createSession, showQuestions
-from src.quizsession.result import QuizResult
-from src.userprofile.manage_user import registerUser, getAllUsers, deleteAllUsers, getJson as getUserJson, toJson as saveUserJson
-from src.questionbase.question_manager import QuestionManager
-from src.questionbase.question import Question, MCQuestion, TFQuestion, SAQuestion
+from .quizsession.session import loadUsers, loadAllQuestions, selectUser, pickQuestions, createSession, showQuestions
+from .quizsession.result import QuizResult
+from .userprofile.manage_user import registerUser, getAllUsers, deleteAllUsers, getJson as getUserJson, toJson as saveUserJson
+from .questionbase.question_manager import QuestionManager
+from .questionbase.question import Question, MCQuestion, TFQuestion, SAQuestion
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -39,7 +38,7 @@ def main():
                 print("Invalid input. Returning to main menu.")
                 continue
             
-            users_path = os.path.join(script_dir, "../data/users.json")
+            users_path = os.path.join(script_dir, "data/users.json")
             
             if task_choice == 1:
                 user_id, user_name = registerUser(users_path)
@@ -53,7 +52,7 @@ def main():
                     print("User not found. Maybe register first?")
                     continue
 
-                questions_path = os.path.join(script_dir, "../data/questions.json")
+                questions_path = os.path.join(script_dir, "data/questions.json")
                 all_questions = loadAllQuestions(questions_path)
                 
                 print("\n=== Quiz Setup ===")
@@ -93,7 +92,7 @@ def main():
                 print(f"Wrong: {result.countWrong()}/{result.sum_questions}")
                 print(f"Score: {result.getScore()}/{result.sum_questions}")
                 print(f"Total Time: {result.total_time:.2f} seconds")
-                sessions_path = os.path.join(script_dir, "../data/sessions.json")
+                sessions_path = os.path.join(script_dir, "data/sessions.json")
                 result.saveResult(sessions_path)
                 if premium_for_use == "premium":
                     print("Displaying charts...")
@@ -118,8 +117,8 @@ def main():
                 print("Invalid input. Returning to main menu.")
                 continue
             
-            questions_path = os.path.join(script_dir, "../data/questions.json")
-            users_path = os.path.join(script_dir, "../data/users.json")
+            questions_path = os.path.join(script_dir, "data/questions.json")
+            users_path = os.path.join(script_dir, "data/users.json")
 
             if admin_choice == 1:
                 print("\n=== Add a Question ===")
