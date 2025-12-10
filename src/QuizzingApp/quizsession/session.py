@@ -3,22 +3,30 @@ from datetime import datetime
 import json
 import random
 import os
-
+from ..errors import DataFileNotFoundError, UserNotFoundError, EmptyQuestionDataError
 def loadAllQuestions(json_file_path):
-    with open(json_file_path, 'r') as f:
-        data = json.load(f)
+    try:
+        with open(json_file_path, 'r') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        raise DataFileNotFoundError("question file not found")
     if isinstance(data, dict) and "questions" in data:
         return data["questions"]
     return data
 
 def loadUsers(json_file_path):
-    with open(json_file_path, 'r') as f:
-        data = json.load(f)
+    try:
+        with open(json_file_path, 'r') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        raise DataFileNotFoundError("user file not found")
     if isinstance(data, dict) and "users" in data:
         return data["users"]
     return data
 
 def selectUser(users):
+    if not users or len(users) == 0:
+        raise UserNotFoundError("Currently no users")
     print("\n=== User Login ===")
     print("Available users:")
     for user in users:
@@ -152,4 +160,4 @@ class QuizSession:
             "question_ids": self.question_ids,
             "total_time": self.culculateTime(),
             "answer": self.answer
-        }
+        }   

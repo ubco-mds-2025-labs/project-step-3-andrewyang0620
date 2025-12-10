@@ -11,3 +11,9 @@ class DataFileNotFoundError(Exception):
 
 class InvalidNameError(Exception):
     pass
+
+class UserNotFoundError(Exception):
+    pass
+
+class EmptyQuestionDataError(Exception):
+    pass
