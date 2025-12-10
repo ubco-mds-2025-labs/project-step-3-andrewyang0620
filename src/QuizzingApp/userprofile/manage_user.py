@@ -99,7 +99,8 @@ def registerUser(filepath=USERS_JSON):
         if age < 0 or age > 150:
             raise InvalidAgeError(f"Age {age} is out of valid range (0-150)")
     except ValueError:
-        raise InvalidAgeError("Age must be a number")
+        print("Invalid age. Setting to 0.")
+        age = 0
     
     try:
         if '@' not in email:
