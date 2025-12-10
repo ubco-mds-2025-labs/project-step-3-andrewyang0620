@@ -3,6 +3,7 @@ import uuid
 import time
 from pathlib import Path
 from .user import RegularUser, PremiumUser
+from ..errors import InvalidAgeError
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -83,9 +84,10 @@ def registerUser(filepath=USERS_JSON):
     
     try:
         age = int(age)
+        if age < 0 or age > 150:
+            raise InvalidAgeError(f"Age {age} is out of valid range (0-150)")
     except ValueError:
-        print("Invalid age. Setting to 0.")
-        age = 0
+        raise InvalidAgeError("Age must be a number")
     
     profile_level = "regular"
     if profile_type in ["yes", "y"]:
