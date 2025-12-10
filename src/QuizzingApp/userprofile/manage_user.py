@@ -3,7 +3,7 @@ import uuid
 import time
 from pathlib import Path
 from .user import RegularUser, PremiumUser
-from ..errors import InvalidAgeError
+from ..errors import InvalidAgeError, InvalidEmailError
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -88,6 +88,13 @@ def registerUser(filepath=USERS_JSON):
             raise InvalidAgeError(f"Age {age} is out of valid range (0-150)")
     except ValueError:
         raise InvalidAgeError("Age must be a number")
+    
+    try:
+        if '@' not in email:
+            raise InvalidEmailError('not a vaild email')
+    except Exception as e:
+        raise InvalidEmailError("email not vaild")
+
     
     profile_level = "regular"
     if profile_type in ["yes", "y"]:

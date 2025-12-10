@@ -2,3 +2,6 @@
 
 class InvalidAgeError(Exception):
     pass
+
+class InvalidEmailError(Exception):
+    pass
