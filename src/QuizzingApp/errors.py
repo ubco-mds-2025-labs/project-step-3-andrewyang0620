@@ -8,3 +8,6 @@ class InvalidEmailError(Exception):
 
 class DataFileNotFoundError(Exception):
     pass
+
+class InvalidNameError(Exception):
+    pass

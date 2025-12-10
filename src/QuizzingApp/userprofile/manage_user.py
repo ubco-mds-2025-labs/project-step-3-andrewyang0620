@@ -3,7 +3,7 @@ import uuid
 import time
 from pathlib import Path
 from .user import RegularUser, PremiumUser
-from ..errors import InvalidAgeError, InvalidEmailError, DataFileNotFoundError
+from ..errors import InvalidAgeError, InvalidEmailError, DataFileNotFoundError, InvalidNameError
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -88,6 +88,11 @@ def registerUser(filepath=USERS_JSON):
     age = input("Enter your age: ").strip()
     email = input("Enter your email: ").strip()
     profile_type = input("Do you want premium? (yes/no): ").strip().lower()
+
+        
+    invalids = ['@', '#', '$', '%']
+    if any(char in name for char in invalids):
+            raise InvalidNameError("name invaild")
     
     try:
         age = int(age)
