@@ -1,0 +1,43 @@
+[
+    {
+        "session_id": "2a7f13f5-21fc-4630-9765-353d1283128b",
+        "user_id": "edaab7a2",
+        "user_name": "jingtao",
+        "score": 3,
+        "total_questions": 4,
+        "percentage": 75.0,
+        "correct": 3,
+        "wrong": 1,
+        "total_time": 8.987423,
+        "results": [
+            {
+                "qid": "1e5eae28",
+                "user_answer": "111",
+                "correct_answer": "111",
+                "is_correct": true,
+                "qtype": "SA"
+            },
+            {
+                "qid": "8129ab4d",
+                "user_answer": "F",
+                "correct_answer": "F",
+                "is_correct": true,
+                "qtype": "TF"
+            },
+            {
+                "qid": "2f1fcc8a",
+                "user_answer": "222",
+                "correct_answer": "222",
+                "is_correct": true,
+                "qtype": "SA"
+            },
+            {
+                "qid": "225dc403",
+                "user_answer": "A",
+                "correct_answer": "B",
+                "is_correct": false,
+                "qtype": "MC"
+            }
+        ]
+    }
+]
