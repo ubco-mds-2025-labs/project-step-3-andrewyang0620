@@ -38,7 +38,8 @@ def deleteAllUsers():
     _users.clear()
 
 def toJson(filepath=USERS_JSON):
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    filepath = Path(filepath)
+    filepath.parent.mkdir(parents=True, exist_ok=True)
     data = [user.toDict() for user in _users.values()]
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
