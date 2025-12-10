@@ -1,0 +1,18 @@
+[
+  {
+    "user_id": "edaab7a2",
+    "name": "jingtao",
+    "age": 23,
+    "email": "jingtao@gmail.com",
+    "grades": [],
+    "profile_level": "premium"
+  },
+  {
+    "user_id": "0b669469",
+    "name": "userNoPremium",
+    "age": 20,
+    "email": "user1@gmail.com",
+    "grades": [],
+    "profile_level": "regular"
+  }
+]
