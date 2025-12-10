@@ -43,12 +43,17 @@ def selectUser(users):
     return None, None, None
 
 def showQuestions(questions):
+    if not questions:
+        raise EmptyQuestionDataError("No questions to display")
     for q in questions:
         qid = q.get('qid', 'N/A')
         qtitle = q.get('qtitle', q.get('topic', 'N/A'))
         print(f"[{qid}] {qtitle}")
         
 def pickQuestions(all_questions, num_questions):
+    if not all_questions:
+        raise EmptyQuestionDataError("Question bank is empty")
+    
     mc_questions = [q for q in all_questions if q.get('qtype', q.get('type', '')) in ['MC', 'MCQ']]
     tf_questions = [q for q in all_questions if q.get('qtype', q.get('type', '')) == 'TF']
     sr_questions = [q for q in all_questions if q.get('qtype', q.get('type', '')) in ['SR', 'SA']]
@@ -68,6 +73,10 @@ def pickQuestions(all_questions, num_questions):
     return selected
 
 def createSession(user_id, user_name, num_questions, question_ids):
+    if not user_id or not user_name:
+        raise ValueError("User ID and name cannot be empty")
+    if not question_ids or len(question_ids) == 0:
+        raise EmptyQuestionDataError("Cannot create session without questions")
     return QuizSession(
         user_id=user_id,
         user_name=user_name,
@@ -98,6 +107,9 @@ class QuizSession:
         print(f"Quiz started for {self.user_name} at {self.start_time}. Good luck!")
     
     def askQuestions(self, all_questions):
+        if not all_questions:
+            raise EmptyQuestionDataError("No questions available to ask")
+        
         for i, qid in enumerate(self.question_ids):
             question = next((q for q in all_questions if q['qid'] == qid), None)
             if not question:
