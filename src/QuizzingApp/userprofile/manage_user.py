@@ -3,7 +3,7 @@ import uuid
 import time
 from pathlib import Path
 from .user import RegularUser, PremiumUser
-from ..errors import InvalidAgeError, InvalidEmailError
+from ..errors import InvalidAgeError, InvalidEmailError, DataFileNotFoundError
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT_DIR / "data"
@@ -40,7 +40,10 @@ def deleteAllUsers():
 
 def toJson(filepath=USERS_JSON):
     filepath = Path(filepath)
-    filepath.parent.mkdir(parents=True, exist_ok=True)
+    try: 
+        filepath.parent.mkdir(parents=True, exist_ok=True)
+    except PermissionError:
+        raise DataFileNotFoundError('No permission')
     data = [user.toDict() for user in _users.values()]
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2)
@@ -50,8 +53,12 @@ def getJson(filepath=USERS_JSON):
     if not Path(filepath).exists():
         _users = {}
         return
-    with open(filepath, "r", encoding="utf-8") as f:
-        raw_users = json.load(f)
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            raw_users = json.load(f)
+    except PermissionError:
+        raise DataFileNotFoundError('no permission')
+    
     _users = {}
     for item in raw_users:
         user_type = item.get("profile_level", "regular")

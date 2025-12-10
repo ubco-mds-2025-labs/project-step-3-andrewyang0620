@@ -5,3 +5,6 @@ class InvalidAgeError(Exception):
 
 class InvalidEmailError(Exception):
     pass
+
+class DataFileNotFoundError(Exception):
+    pass
