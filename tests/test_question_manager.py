@@ -74,6 +74,32 @@ class TestQuestionManager(unittest.TestCase):
         self.assertEqual(mc.qoptions, ["1", "2", "4"])
         self.assertEqual(mc.qanswer, "4")
 
+    def test_filter_multiple_types(self):
+        sa_questions = self.manager.filterQuestions("SA")
+        self.assertEqual(len(sa_questions), 1)
+        self.assertEqual(sa_questions[0].qid, "Q1")
+        
+        mc_questions = self.manager.filterQuestions("MC")
+        self.assertEqual(len(mc_questions), 1)
+        self.assertEqual(mc_questions[0].qid, "Q3")
+        empty_list = self.manager.filterQuestions("NONEXISTENT")
+        self.assertEqual(len(empty_list), 0)
+
+    def test_delete_nonexistent_question(self):
+        initial_count = len(self.manager.questions)
+        self.manager.deleteQuestion("NONEXISTENT_ID")
+        self.assertEqual(len(self.manager.questions), initial_count)
+
+    def test_empty_question_manager(self):
+        empty_manager = QuestionManager()
+        all_questions = empty_manager.getAllQuestions()
+        self.assertEqual(len(all_questions), 0)
+        filtered = empty_manager.filterQuestions("MC")
+        self.assertEqual(len(filtered), 0)
+        
+        empty_manager.deleteQuestion("Q1")
+        self.assertEqual(len(empty_manager.questions), 0)
+
 
 if __name__ == "__main__":
     unittest.main()
