@@ -61,7 +61,24 @@ QuizzingApp/
 └── .gitignore 
 ```
 
-## Features
+## Installation
+
+## Testing Coverage
+This project includes automated unittests written using `unittest`, which covers all App modules. The `test_suite.py` combines all the test and run at once. 
+
+The test coverage is measured using the `coverage.py` tool. We add a coverage.ini file to ensure the converted coverage percentage excludes files in `test/` folder.
+
+We have achieved 93% total coverage. The coverage report screenshot is below:
+
+<img src="docs/coverage_report.png" alt="Test Coverage" width="70%">
+
+Here are the code for the test coverage:
+```bash
+coverage run -m pytest
+coverage report
+```
+
+## Package Function Details
 ### Sub-package 1: userprofile/
 ### *user.py*
 - `__init__(self, user_id, name, age, email, grades=None, profile_level="regular")` Initializes a basic User object.
