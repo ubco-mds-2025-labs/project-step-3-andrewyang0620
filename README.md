@@ -1,70 +1,10 @@
 # Quizzing App DATA533
-### This is the repo of step 2
-This is the repo for DATA 533 Project Group 3
 
 Group 3 Mebmers: ***Jingtao Yang***, ***Yiran Wang***, ***Zihao Zhao***
-# New updates for step 2:
-## Updated Structure
-```
-QuizzingApp/
-│
-├── README.md
-├── .gitignore
-│
-├── data/                   # all storage JSON files
-│   ├── questions.json
-│   ├── users.json
-│   └── sessions.json
-│
-├── docs/
-│   ├── project description.pdf  # task 2 
-│
-├── quizzingapp/
-│   ├── __init__.py
-│   |
-│   ├── questionbase/        # Sub-Package 1
-│   │   ├── __init__.py
-│   │   ├── questions.py
-│   │   └── manage_question.py
-│   |
-│   ├── userprofile/         # Sub-Package 2
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   └── manage_user.py
-│   |
-│   └── quizsession/         # Sub-Package 3
-│       ├── __init__.py
-│       ├── session.py
-│       └── result.py
-│
-├── tests/                   # unit tests   
-│   ├── __init__.py
-|   ├── test_suite.py        # the main test suite to run all tests
-|   ├── test_question.py
-|   ├── test_question_manager.py
-|   ├── test_user.py
-|   ├── test_user_manager.py
-|   ├── test_session.py
-|   └── test_result.py
-|
-└── examples/               
-```
-## Test Cases Details
-### test_suite.py
-### test_question.py
-### test_question_manager.py
-### test_user.py
-### test_user_manager.py
-### test_session.py
-### test_result.py
 
-## Instruction to Run Tests
-
--------
-# Previous README contents for step 1:
 Our project is designed to be a Quizzing App that supports the full lifecycle of quiz creation, user management, quiz execution, scoring, and visualization. 
 
-The key features are:
+**The key features are:**
 
 1. Question Creation & Management - supports multiple question types (MCQ, TF, SA) and includes functions to store, modify, and organize questions.
 2. User (Quiz-Taker) Profile - support regular/prenium users, for creation/management of user profiles and manage past quiz scores
@@ -75,44 +15,110 @@ The core app components are divided into 3 subpackages, and each of the subpacka
 
 ## General Structure
 ```
-
 QuizzingApp/
-│
 ├── README.md
-├── .gitignore
-│
-├── data/                   # all storage JSON files
-│   ├── questions.json
-│   ├── users.json
-│   └── sessions.json
-│
+├── .github/
+│   └── workflows/
+│       └── main.yml
+├── pyproject.toml
+├── LICENSE
+├── MANIFEST.in
+├── coverage.ini
 ├── docs/
-│   ├── project description.pdf  # task 2 
+│   ├── project_description.pdf
+│   └── coverage_report.png           # coverage report screenshot
 │
-├── quizzingapp/
-│   ├── __init__.py
-│   |
-│   ├── questionbase/        # Sub-Package 1
-│   │   ├── __init__.py
-│   │   ├── questions.py
-│   │   └── manage_question.py
-│   |
-│   ├── userprofile/         # Sub-Package 2
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   └── manage_user.py
-│   |
-│   └── quizsession/         # Sub-Package 3
+├── src/
+│   └── QuizzingApp/
 │       ├── __init__.py
-│       ├── session.py
-│       └── result.py
+│       ├── __main__.py
+│       │
+│       ├── questionbase/             # sub-package 1
+│       │   ├── __init__.py
+│       │   ├── question.py
+│       │   └── question_manager.py
+│       │
+│       ├── userprofile/              # subpackage 2
+│       │   ├── __init__.py
+│       │   ├── user.py
+│       │   └── user_manager.py
+│       │
+│       ├── quizsession/              # sub-package 3
+│       │   ├── __init__.py
+│       │   ├── session.py
+│       │   └── result.py
+│       │
+│       └── data/
+│           ├── questions.json
+│           ├── users.json
+│           └── sessions.json
 │
-├── tests/                   # unit tests   
+├── tests/
+│   ├── __init__.py
+|   ├── test_suite.py
+│   ├── other unit test files...
 │
-└── examples/               
+└── .gitignore 
 ```
 
-## Features
+## Testing Coverage
+This project includes automated unittests written using `unittest`, which covers all App modules. The `test_suite.py` combines all the test and run at once. 
+
+The test coverage is measured using the `coverage.py` tool. We add a coverage.ini file to ensure the converted coverage percentage excludes files in `test/` folder.
+
+We have achieved **93%** total coverage. The coverage report screenshot is below:
+
+<img src="docs/coverage_report.png" alt="Test Coverage" width="70%">
+
+Here are the code for the test coverage:
+```bash
+coverage run -m pytest
+coverage report
+```
+
+## Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ubco-mds-2025-labs/project-step-3-andrewyang0620.git
+   cd project-step-3-andrewyang0620
+   ```
+
+
+2. **Install required packages:**
+   ```bash
+   pip install matplotlib numpy
+   ```
+
+## How to Use
+### Running the Application
+After direct to `project-step-3-andrewyang0620`, excute the following:
+```bash
+cd src
+python -m QuizzingApp
+```
+The application will display an interactive menu system. Simply follow the on-screen instructions:
+
+1. **Main Menu**: Choose between User or Admin mode, or quit
+   - Enter `1` for User functions
+   - Enter `2` for Admin functions
+   - Enter `q` to quit
+
+2. **Follow the prompts**: The application will guide you through each step
+   - Select options by entering the corresponding number
+   - Enter `q` at any menu to return to the previous screen
+
+3. **User Mode**:
+   - Register a new user profile
+   - Create a quiz session and participate in it.
+
+4. **Admin Mode**:
+   - Add new questions
+   - View all existing questions
+   - Delete all questions
+   - View all users
+   - Delete all users
+
+## Package Function Details
 ### Sub-package 1: userprofile/
 ### *user.py*
 - `__init__(self, user_id, name, age, email, grades=None, profile_level="regular")` Initializes a basic User object.
@@ -265,45 +271,3 @@ All data is stored in JSON format in the `data/` directory:
 - **users.json**: User profiles
 - **questions.json**: All quiz questions
 - **sessions.json**: Quiz results
-
-## Installation
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/andrewyang0620/Quizzing_App_DATA533.git
-   cd Quizzing_App_DATA533
-   ```
-
-
-2. **Install required packages:**
-   ```bash
-   pip install matplotlib numpy
-   ```
-
-## How to Use
-### Running the Application
-Run the main application in your terminal:
-```bash
-python src/main.py
-```
-The application will display an interactive menu system. Simply follow the on-screen instructions:
-
-1. **Main Menu**: Choose between User or Admin mode, or quit
-   - Enter `1` for User functions
-   - Enter `2` for Admin functions
-   - Enter `q` to quit
-
-2. **Follow the prompts**: The application will guide you through each step
-   - Select options by entering the corresponding number
-   - Enter `q` at any menu to return to the previous screen
-
-3. **User Mode**:
-   - Register a new user profile
-   - Create a quiz session and participate in it.
-
-4. **Admin Mode**:
-   - Add new questions
-   - View all existing questions
-   - Delete all questions
-   - View all users
-   - Delete all users
-
