@@ -4,7 +4,7 @@ Group 3 Mebmers: ***Jingtao Yang***, ***Yiran Wang***, ***Zihao Zhao***
 
 Our project is designed to be a Quizzing App that supports the full lifecycle of quiz creation, user management, quiz execution, scoring, and visualization. 
 
-The key features are:
+**The key features are:**
 
 1. Question Creation & Management - supports multiple question types (MCQ, TF, SA) and includes functions to store, modify, and organize questions.
 2. User (Quiz-Taker) Profile - support regular/prenium users, for creation/management of user profiles and manage past quiz scores
@@ -26,24 +26,24 @@ QuizzingApp/
 ├── coverage.ini
 ├── docs/
 │   ├── project_description.pdf
-│   └── coverage_report.png
+│   └── coverage_report.png           # coverage report screenshot
 │
 ├── src/
 │   └── QuizzingApp/
 │       ├── __init__.py
 │       ├── __main__.py
 │       │
-│       ├── questionbase/
+│       ├── questionbase/             # sub-package 1
 │       │   ├── __init__.py
 │       │   ├── question.py
 │       │   └── question_manager.py
 │       │
-│       ├── userprofile/
+│       ├── userprofile/              # subpackage 2
 │       │   ├── __init__.py
 │       │   ├── user.py
 │       │   └── user_manager.py
 │       │
-│       ├── quizsession/
+│       ├── quizsession/              # sub-package 3
 │       │   ├── __init__.py
 │       │   ├── session.py
 │       │   └── result.py
@@ -61,8 +61,6 @@ QuizzingApp/
 └── .gitignore 
 ```
 
-## Installation
-
 ## Testing Coverage
 This project includes automated unittests written using `unittest`, which covers all App modules. The `test_suite.py` combines all the test and run at once. 
 
@@ -77,6 +75,48 @@ Here are the code for the test coverage:
 coverage run -m pytest
 coverage report
 ```
+
+## Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ubco-mds-2025-labs/project-step-3-andrewyang0620.git
+   cd project-step-3-andrewyang0620
+   ```
+
+
+2. **Install required packages:**
+   ```bash
+   pip install matplotlib numpy
+   ```
+
+## How to Use
+### Running the Application
+After direct to `project-step-3-andrewyang0620`, excute the following:
+```bash
+cd src
+python -m QuizzingApp
+```
+The application will display an interactive menu system. Simply follow the on-screen instructions:
+
+1. **Main Menu**: Choose between User or Admin mode, or quit
+   - Enter `1` for User functions
+   - Enter `2` for Admin functions
+   - Enter `q` to quit
+
+2. **Follow the prompts**: The application will guide you through each step
+   - Select options by entering the corresponding number
+   - Enter `q` at any menu to return to the previous screen
+
+3. **User Mode**:
+   - Register a new user profile
+   - Create a quiz session and participate in it.
+
+4. **Admin Mode**:
+   - Add new questions
+   - View all existing questions
+   - Delete all questions
+   - View all users
+   - Delete all users
 
 ## Package Function Details
 ### Sub-package 1: userprofile/
@@ -231,45 +271,3 @@ All data is stored in JSON format in the `data/` directory:
 - **users.json**: User profiles
 - **questions.json**: All quiz questions
 - **sessions.json**: Quiz results
-
-## Installation
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/andrewyang0620/Quizzing_App_DATA533.git
-   cd Quizzing_App_DATA533
-   ```
-
-
-2. **Install required packages:**
-   ```bash
-   pip install matplotlib numpy
-   ```
-
-## How to Use
-### Running the Application
-Run the main application in your terminal:
-```bash
-python src/main.py
-```
-The application will display an interactive menu system. Simply follow the on-screen instructions:
-
-1. **Main Menu**: Choose between User or Admin mode, or quit
-   - Enter `1` for User functions
-   - Enter `2` for Admin functions
-   - Enter `q` to quit
-
-2. **Follow the prompts**: The application will guide you through each step
-   - Select options by entering the corresponding number
-   - Enter `q` at any menu to return to the previous screen
-
-3. **User Mode**:
-   - Register a new user profile
-   - Create a quiz session and participate in it.
-
-4. **Admin Mode**:
-   - Add new questions
-   - View all existing questions
-   - Delete all questions
-   - View all users
-   - Delete all users
-
