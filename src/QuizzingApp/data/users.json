@@ -14,5 +14,13 @@
     "email": "user1@gmail.com",
     "grades": [],
     "profile_level": "regular"
+  },
+  {
+    "user_id": "b57048da",
+    "name": "zihao",
+    "age": 20,
+    "email": "zihao@gmail.com",
+    "grades": [],
+    "profile_level": "premium"
   }
 ]
