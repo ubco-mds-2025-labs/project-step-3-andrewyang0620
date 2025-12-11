@@ -66,7 +66,7 @@ This project includes automated unittests written using `unittest`, which covers
 
 The test coverage is measured using the `coverage.py` tool. We add a coverage.ini file to ensure the converted coverage percentage excludes files in `test/` folder.
 
-We have achieved 93% total coverage. The coverage report screenshot is below:
+We have achieved **93%** total coverage. The coverage report screenshot is below:
 
 <img src="docs/coverage_report.png" alt="Test Coverage" width="70%">
 
