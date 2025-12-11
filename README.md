@@ -1,5 +1,15 @@
 # Quizzing App DATA533
 
+## This is the repository for step 3. The following is what we have done:
+- Use GitHub actions for CI/CD, you can see the result in `Actions`.
+- Add more unit test cases to make sure large coverage.
+- Add self-defined exception classes in error.py, add error-handling methods inside multiple modules
+- Test suite provide 93% coverage, with the screenshot added (see in README)
+- Project video uploaded to YouTube, link provided below.
+- Package published, with link below.
+
+---
+
 Group 3 Mebmers: ***Jingtao Yang***, ***Yiran Wang***, ***Zihao Zhao***
 
 [**Project Presentation Video (YouTube Link)**](https://youtu.be/oRUMw0Y-9w0)
