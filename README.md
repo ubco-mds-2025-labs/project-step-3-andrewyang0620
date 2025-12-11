@@ -4,6 +4,8 @@ Group 3 Mebmers: ***Jingtao Yang***, ***Yiran Wang***, ***Zihao Zhao***
 
 [**Project Presentation Video (YouTube Link)**](https://youtu.be/oRUMw0Y-9w0)
 
+[**Project PyPi Package Link**](https://pypi.org/project/QuizzingAppPackage/0.1.0/)
+
 Our project is designed to be a Quizzing App that supports the full lifecycle of quiz creation, user management, quiz execution, scoring, and visualization. 
 
 **The key features are:**
