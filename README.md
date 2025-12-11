@@ -1,67 +1,7 @@
 # Quizzing App DATA533
-### This is the repo of step 2
-This is the repo for DATA 533 Project Group 3
 
 Group 3 Mebmers: ***Jingtao Yang***, ***Yiran Wang***, ***Zihao Zhao***
-# New updates for step 2:
-## Updated Structure
-```
-QuizzingApp/
-│
-├── README.md
-├── .gitignore
-│
-├── data/                   # all storage JSON files
-│   ├── questions.json
-│   ├── users.json
-│   └── sessions.json
-│
-├── docs/
-│   ├── project description.pdf  # task 2 
-│
-├── quizzingapp/
-│   ├── __init__.py
-│   |
-│   ├── questionbase/        # Sub-Package 1
-│   │   ├── __init__.py
-│   │   ├── questions.py
-│   │   └── manage_question.py
-│   |
-│   ├── userprofile/         # Sub-Package 2
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   └── manage_user.py
-│   |
-│   └── quizsession/         # Sub-Package 3
-│       ├── __init__.py
-│       ├── session.py
-│       └── result.py
-│
-├── tests/                   # unit tests   
-│   ├── __init__.py
-|   ├── test_suite.py        # the main test suite to run all tests
-|   ├── test_question.py
-|   ├── test_question_manager.py
-|   ├── test_user.py
-|   ├── test_user_manager.py
-|   ├── test_session.py
-|   └── test_result.py
-|
-└── examples/               
-```
-## Test Cases Details
-### test_suite.py
-### test_question.py
-### test_question_manager.py
-### test_user.py
-### test_user_manager.py
-### test_session.py
-### test_result.py
 
-## Instruction to Run Tests
-
--------
-# Previous README contents for step 1:
 Our project is designed to be a Quizzing App that supports the full lifecycle of quiz creation, user management, quiz execution, scoring, and visualization. 
 
 The key features are:
@@ -75,41 +15,50 @@ The core app components are divided into 3 subpackages, and each of the subpacka
 
 ## General Structure
 ```
-
 QuizzingApp/
-│
 ├── README.md
-├── .gitignore
-│
-├── data/                   # all storage JSON files
-│   ├── questions.json
-│   ├── users.json
-│   └── sessions.json
-│
+├── .github/
+│   └── workflows/
+│       └── main.yml
+├── pyproject.toml
+├── LICENSE
+├── MANIFEST.in
+├── coverage.ini
 ├── docs/
-│   ├── project description.pdf  # task 2 
+│   ├── project_description.pdf
+│   └── coverage_report.png
 │
-├── quizzingapp/
-│   ├── __init__.py
-│   |
-│   ├── questionbase/        # Sub-Package 1
-│   │   ├── __init__.py
-│   │   ├── questions.py
-│   │   └── manage_question.py
-│   |
-│   ├── userprofile/         # Sub-Package 2
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   └── manage_user.py
-│   |
-│   └── quizsession/         # Sub-Package 3
+├── src/
+│   └── QuizzingApp/
 │       ├── __init__.py
-│       ├── session.py
-│       └── result.py
+│       ├── __main__.py
+│       │
+│       ├── questionbase/
+│       │   ├── __init__.py
+│       │   ├── question.py
+│       │   └── question_manager.py
+│       │
+│       ├── userprofile/
+│       │   ├── __init__.py
+│       │   ├── user.py
+│       │   └── user_manager.py
+│       │
+│       ├── quizsession/
+│       │   ├── __init__.py
+│       │   ├── session.py
+│       │   └── result.py
+│       │
+│       └── data/
+│           ├── questions.json
+│           ├── users.json
+│           └── sessions.json
 │
-├── tests/                   # unit tests   
+├── tests/
+│   ├── __init__.py
+|   ├── test_suite.py
+│   ├── other unit test files...
 │
-└── examples/               
+└── .gitignore 
 ```
 
 ## Features
